@@ -1,9 +1,15 @@
-import React from "react";
+import React, { useContext, useEffect } from "react";
+import { AppContext } from "../../context/AppContext";
 
-const ListTile = ({ doc, onApprove }) => {
+const ListTile = ({ doc }) => {
+  const onApproveClickListener = () => {
+    addCertificate(doc.username, doc.filename, doc.fileurl, doc.userId);
+  };
+  const { addCertificate, addNewDocRequest } = useContext(AppContext);
+
   return (
     <tr class="border-b hover:bg-blue-100 bg-gray-100">
-      <td class="p-3 px-5">{doc.name}</td>
+      <td class="p-3 px-5">{doc.username}</td>
       <td class="p-3 px-5">{doc.filename}</td>
       <td class="p-3 px-5 flex justify-end">
         <button
@@ -13,7 +19,7 @@ const ListTile = ({ doc, onApprove }) => {
           View
         </button>
         <button
-          onClick={onApprove}
+          onClick={onApproveClickListener}
           type="button"
           class="mr-3 text-sm bg-green-500 hover:bg-green-700 text-white py-1 px-2 rounded focus:outline-none focus:shadow-outline"
         >
