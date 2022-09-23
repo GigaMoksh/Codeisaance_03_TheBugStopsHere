@@ -15,6 +15,7 @@ export const AppProvider = ({ children }) => {
   const [adminRequests, setAdminRequests] = useState([]);
   const [userDocs, setUserDocs] = useState([]);
   const [isDocsLoading, setIsDocsLoading] = useState(false);
+  const [isAdmin, setIsAdmin] = useState(false);
 
   const {
     authenticate,
@@ -43,6 +44,8 @@ export const AppProvider = ({ children }) => {
         setUsername(currentUsername);
         const account = await user?.get("ethAddress");
         setCurrentAccount(account);
+        console.log("current account", account);
+        setIsAdmin(account === "0xdde031790af8847d81044ced61da91c085abef7a");
         const formatAccount = account.slice(0, 5) + "..." + account.slice(-5);
         setFormattedAccount(formatAccount);
         console.log(account);
@@ -51,6 +54,7 @@ export const AppProvider = ({ children }) => {
       } else {
         setCurrentAccount("");
         setFormattedAccount("");
+        setIsAdmin(false);
       }
     })();
   }, [
@@ -195,6 +199,7 @@ export const AppProvider = ({ children }) => {
         setUserDocs,
         isDocsLoading,
         getRequestDetail,
+        isAdmin,
       }}
     >
       {children}
