@@ -19,7 +19,6 @@ const App = () => {
       <AppProvider>
         <Router>
           <div>
-            <Header />
             {/* <Home /> */}
             <Routes>
               <Route exact path="/" element={<Home />} />
@@ -39,4 +38,4 @@ const App = () => {
   );
 };
 
-export default App
+export default App;

@@ -1,12 +1,16 @@
-import React from "react";
+import React, { useContext, useEffect } from "react";
 import ListTile from "./ListTile";
+import { AppContext } from "../../context/AppContext";
 import { Link } from "react-router-dom";
-import { IoAddCircleOutline } from 'react-icons/io5'
+import { IoAddCircleOutline } from "react-icons/io5";
 const VerifiedDoc = () => {
-  const doc = {
-    name: "Omkar Bhostekar",
-    filename: "Birth certificate",
-  };
+  useEffect(() => {
+    (async () => {
+      queryUserRequestsByUserId("approved");
+    })();
+  }, []);
+  const { userDocs, queryUserRequestsByUserId, isDocsLoading } =
+    useContext(AppContext);
   return (
     <div class="h-full text-gray-900 bg-gray-200">
       <div class="p-3 flex">
@@ -16,13 +20,17 @@ const VerifiedDoc = () => {
         <table class="w-full text-md bg-white shadow-md rounded mb-4">
           <tbody>
             <tr class="border-b">
-              <th class="text-left p-2 px-5 text-center">Name</th>
-              <th class="text-left p-2 px-5 text-center">FileName</th>
+              <th class="p-2 px-5 text-center">FileName</th>
+              <th class="p-2 px-5 text-center">Verified On</th>
               <th></th>
             </tr>
-            <ListTile doc={doc} />
-            <ListTile doc={doc} />
-            <ListTile doc={doc} />
+            {isDocsLoading ? (
+              <div className="py-8 w-full justify-center">Loading...</div>
+            ) : userDocs.length !== 0 ? (
+              userDocs.map((doc) => <ListTile doc={doc} />)
+            ) : (
+              <div className="py-8">No Pending requests</div>
+            )}
           </tbody>
         </table>
         <Link className="w-fit" to="/upload-doc">

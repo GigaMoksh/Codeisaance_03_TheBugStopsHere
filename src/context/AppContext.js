@@ -18,6 +18,8 @@ export const AppProvider = ({ children }) => {
   const [addNewRequest, setAddNewRequest] = useState("");
   const [newReqIsLoading, setNewReqIsLoading] = useState(false);
   const [adminRequests, setAdminRequests] = useState([]);
+  const [userDocs, setUserDocs] = useState([]);
+  const [isDocsLoading, setIsDocsLoading] = useState(false);
 
   const {
     authenticate,
@@ -85,12 +87,19 @@ export const AppProvider = ({ children }) => {
   };
 
   const queryUserRequestsByUserId = async (status) => {
+    setUserDocs([]);
+    setIsDocsLoading(true);
     const Request = Moralis.Object.extend("requests");
     const query = new Moralis.Query(Request);
     query.equalTo("userId", user.attributes.ethAddress);
     query.equalTo("status", status);
     const results = await query.find();
-    console.log(results);
+    const res = results.map((result) => {
+      return result.attributes;
+    });
+    console.log(res);
+    setIsDocsLoading(false);
+    setUserDocs(res);
   };
 
   const queryAdminRequestsByStatus = async (status) => {
@@ -172,6 +181,9 @@ export const AppProvider = ({ children }) => {
         queryAdminRequestsByStatus,
         adminRequests,
         setAdminRequests,
+        userDocs,
+        setUserDocs,
+        isDocsLoading,
       }}
     >
       {children}
