@@ -9,6 +9,7 @@ import { AppProvider } from "./context/AppContext";
 import Admin from "./components/admin/Admin";
 import UploadDoc from "./components/user/UploadDoc";
 import Verify from "./components/Verify";
+import VerifyDocument from "./components/VerifyDocument";
 const App = () => {
   return (
     <MoralisProvider
@@ -28,6 +29,7 @@ const App = () => {
               <Route exact path="/admin" element={<Admin />} />
               <Route exact path="/upload-doc" element={<UploadDoc />} />
               <Route exact path="verify" element={<Verify />} />
+              <Route exact path="verifyDoc" element={<VerifyDocument />} />
             </Routes>
           </div>
         </Router>
