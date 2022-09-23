@@ -154,18 +154,17 @@ export const AppProvider = ({ children }) => {
     );
   };
 
-  const verifyCertificate = async () => {
-    const id = "2";
+  const verifyCertificate = async (userId, certId) => {
     const options = {
       contractAddress: certificateAddress,
       functionName: "getCertificate",
       abi: certificateAbi,
       params: {
-        _user: "0xdde031790Af8847d81044CEd61dA91C085abef7A",
-        _id: id,
+        _user: userId,
+        _id: certId,
       },
     };
-    // console.log(user);
+    console.log("before verification");
     const res = await Moralis.executeFunction(options);
     console.log(res);
   };

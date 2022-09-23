@@ -1,4 +1,5 @@
 import React from "react";
+import { Link, createSearchParams } from "react-router-dom";
 
 const ListTile = ({ doc }) => {
   var date = new Date(doc.updatedAt);
@@ -12,7 +13,17 @@ const ListTile = ({ doc }) => {
           type="button"
           class="mr-3 text-sm bg-blue-500 hover:bg-blue-700 text-white py-1 px-2 rounded focus:outline-none focus:shadow-outline"
         >
-          View
+          <Link
+            to={{
+              pathname: "/verify",
+              search: `?${createSearchParams({
+                u: doc.userId,
+                token: doc.token,
+              })}`,
+            }}
+          >
+            View
+          </Link>
         </button>
         <button
           type="button"
