@@ -92,7 +92,8 @@ p:last-of-type{
 .title span{
     font-weight: 300;
     display: block;
-    font-size: 0.9em;
+    font-size: 0.4em;
+    font-weight: 500;
 }
 .title-cta{
     margin: 0.2em 0 0.5em 0;
@@ -122,14 +123,16 @@ p:last-of-type{
     padding: 0.5em 1.75em;
 }
 .button-accent{
-    color: rgb(34, 244, 44);
-    border-color: rgb(34, 244, 44);
+    /* color: rgb(34, 244, 44);
+    border-color: rgb(34, 244, 44); */
+    color: rgb(255, 255, 255);
+    border-color: rgb(255, 255, 255);
 }
 
 .button-accent:hover,
 .button-accent:focus {
     color: black;
-    background-color: rgb(34, 244, 44, 0.5);
+    background-color: rgba(218, 255, 220, 0.5);
     font-weight: 600;
 }
 .button-dark{

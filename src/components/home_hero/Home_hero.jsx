@@ -4,8 +4,8 @@ const Home_hero = () => {
   return (
     <section className="home-hero parallax-effect">
         <div className="container">
-            <h1 className="title">Making things look great 
-                <span>for companies who make great stuff.</span>
+            <h1 className="title">DigiSec
+                <span>A Decentralized Certificate Issuance and Verification System to create certificates that are Immutable, Cryptographically Secured, and have Zero Downtime. All powered by decentralized Ethereum Smart Contracts.</span>
             </h1>
             <a href="#" className="button button-accent">SEE OUR WORK</a>
         </div>
