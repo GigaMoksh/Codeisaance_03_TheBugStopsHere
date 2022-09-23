@@ -3,7 +3,7 @@ import { Document, Page, pdfjs } from "react-pdf/dist/esm/entry.webpack5";
 import mypdf from "../assests/pdfs/1.pdf";
 import { BsChevronLeft, BsChevronRight } from "react-icons/bs";
 
-function PDFViewer() {
+function PDFViewer({ fileurl }) {
   const [numPages, setNumPages] = useState(null);
   const [pageNumber, setPageNumber] = useState(1);
 
@@ -16,7 +16,7 @@ function PDFViewer() {
     <div className="flex items-center justify-center flex-col">
       <Document
         file={{
-          url: "https://cors-anywhere.herokuapp.com/https://www.africau.edu/images/default/sample.pdf",
+          url: `https://cors-anywhere.herokuapp.com/${fileurl}`,
         }}
         onLoadSuccess={onDocumentLoadSuccess}
         onLoadError={console.error}

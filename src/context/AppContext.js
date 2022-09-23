@@ -109,6 +109,19 @@ export const AppProvider = ({ children }) => {
     setAdminRequests(res);
   };
 
+  const getRequestDetail = async (userId, token) => {
+    const Request = Moralis.Object.extend("requests");
+    const query = new Moralis.Query(Request);
+    query.equalTo("userId", userId);
+    query.equalTo("token", token);
+    const results = await query.find();
+    const res = results.map((result) => {
+      return result.attributes;
+    });
+    console.log(res);
+    return res[0];
+  };
+
   const addCertificate = async (username, filename, url, userId) => {
     const id = Math.random().toString(36).substring(2, 15);
     const key = "1234567890";
@@ -181,6 +194,7 @@ export const AppProvider = ({ children }) => {
         userDocs,
         setUserDocs,
         isDocsLoading,
+        getRequestDetail,
       }}
     >
       {children}
