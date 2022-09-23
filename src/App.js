@@ -5,16 +5,26 @@ import Home_about from './components/home_about/Home_about'
 import Portfolio from './components/portfolio/Portfolio'
 import CTA from './components/cta/CTA'
 import Footer from './components/footer/Footer'
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'
+
 const App = () => {
   return (
-    <>
-      <Header/>
-      <Home_hero/>
-      <Home_about/>
-      <Portfolio/>
-      <CTA/>
+    <Router>
+    <div>
+    <Header/>
+      <Routes>
+        <Route exact path="/" element={<Home_hero/>} />
+        <Route exact path="/login" element={<h1>vaibhav</h1>}/>
+        <Route exact path="/recovery-password" element={<h1>Login</h1>}/>
+        <Route path="*" element={<h1>Login</h1>}/>
+      </Routes>
       <Footer/>
-    </>
+    </div>
+  </Router>
+      
+ 
+    
+
   )
 }
 
