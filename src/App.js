@@ -21,7 +21,6 @@ const App = () => {
               <Route exact path="/recovery-password" element={<h1>Login</h1>} />
               <Route path="*" element={<h1>Login</h1>} />
             </Routes>
-            <Footer />
           </div>
         </Router>
       </MoralisProvider>
