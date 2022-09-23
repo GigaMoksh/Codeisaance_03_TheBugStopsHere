@@ -1,11 +1,20 @@
-import React from "react";
+import React, { useContext } from "react";
 import ListTile from "./ListTile";
+import { AppContext } from "../../context/AppContext";
 
 const AdminPending = () => {
   const doc = {
     name: "Omkar Bhostekar",
     filename: "Birth certificate",
   };
+
+  const onApproveListener = () => {
+    console.log("clicked");
+    addCertificate();
+  };
+
+  const { addCertificate } = useContext(AppContext);
+
   return (
     <div class="h-full text-gray-900 bg-gray-200">
       <div class="p-3 flex">
@@ -19,9 +28,9 @@ const AdminPending = () => {
               <th class="text-left p-2 px-5">FileName</th>
               <th></th>
             </tr>
-            <ListTile doc={doc} />
-            <ListTile doc={doc} />
-            <ListTile doc={doc} />
+            <ListTile doc={doc} onApprove={onApproveListener} />
+            <ListTile doc={doc} onApprove={onApproveListener} />
+            <ListTile doc={doc} onApprove={onApproveListener} />
           </tbody>
         </table>
       </div>
