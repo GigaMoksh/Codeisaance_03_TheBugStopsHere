@@ -1,6 +1,6 @@
 import { createContext, useState, useEffect } from "react";
 import { useMoralis, useMoralisQuery } from "react-moralis";
-import { amazonAbi, amazonCoinAddress } from "../../lib/constants";
+import { amazonAbi, amazonCoinAddress } from "../lib/constants";
 import { ethers } from "ethers";
 
 export const AppContext = createContext();
