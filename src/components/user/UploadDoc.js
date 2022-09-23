@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
+import { AppContext } from "../../context/AppContext";
 import FileImg from "../../assests/file.png";
 import { Link } from "react-router-dom";
 const UploadDoc = () => {
@@ -9,11 +10,37 @@ const UploadDoc = () => {
     uploadcontainer: `absolute top-0 right-0 bottom-0 left-0 w-full h-full m-auo flex items-center justify-center`,
   };
 
+  const onSubmitClickListener = () => {
+    addNewDocRequest(
+      filename,
+      "https://www.africau.edu/images/default/sample.pdf"
+    );
+  };
+
+  const { addNewDocRequest } = useContext(AppContext);
   const [file, setFile] = useState("");
+  const [filename, setFilename] = useState("");
   return (
     <div className="h-screen w-screen flex items-center justify-center">
       <form className="flex flex-col items-center ">
-        <div class="">
+        <div class="form-floating mb-3 xl:w-96">
+          <input
+            type="text"
+            autocomplete="off"
+            class="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700
+      bg-white bg-clip-padding
+      border border-solid border-gray-300
+      rounded
+      transition
+      ease-in-out
+      m-0
+      focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
+            id="filename"
+            placeholder="Add a file name"
+            onInput={(e) => setFilename(e.target.value)}
+          />
+        </div>
+        <div class="mt-20">
           <div class="relative group w-full h-64 flex justify-center items-center">
             <div class="absolute inset-0 w-full h-full rounded-xl bg-white bg-opacity-80 shadow-2xl backdrop-blur-xl group-hover:bg-opacity-70 group-hover:scale-110 transition duration-300"></div>
 
@@ -53,12 +80,11 @@ const UploadDoc = () => {
           >
             Back
           </Link>
-          <div className="m-auto mt-[16px] w-full block bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded cursor-pointer">
-            <Link
-            //  to="/userDashboard"
-            >
-              Submit
-            </Link>
+          <div
+            className="m-auto mt-[16px] w-full block bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded cursor-pointer"
+            onClick={onSubmitClickListener}
+          >
+            Submit
           </div>
         </div>
       </form>

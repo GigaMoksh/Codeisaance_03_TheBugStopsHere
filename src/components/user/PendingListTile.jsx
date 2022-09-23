@@ -1,6 +1,6 @@
 import React from "react";
 
-const ListTile = ({ doc }) => {
+const PendingListTile = ({ doc }) => {
   var date = new Date(doc.updatedAt);
   var options = { year: "numeric", month: "long", day: "numeric" };
   return (
@@ -10,19 +10,13 @@ const ListTile = ({ doc }) => {
       <td class="p-3 px-5 flex justify-end">
         <button
           type="button"
-          class="mr-3 text-sm bg-blue-500 hover:bg-blue-700 text-white py-1 px-2 rounded focus:outline-none focus:shadow-outline"
+          class="mr-3 text-sm bg-red-500 hover:bg-red-700 text-white py-1 px-2 rounded focus:outline-none focus:shadow-outline"
         >
-          View
-        </button>
-        <button
-          type="button"
-          class="mr-3 text-sm bg-green-500 hover:bg-green-700 text-white py-1 px-2 rounded focus:outline-none focus:shadow-outline"
-        >
-          Copy Link
+          Delete
         </button>
       </td>
     </tr>
   );
 };
 
-export default ListTile;
+export default PendingListTile;
