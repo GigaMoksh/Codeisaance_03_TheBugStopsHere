@@ -7,14 +7,12 @@
 const hre = require("hardhat");
 
 async function main() {
-  const certificateFactory = await hre.ethers.getContractFactory(
-    "CertificateFactory"
-  );
+  const certificateFactory = await hre.ethers.getContractFactory("Certificate");
   const certificate = await certificateFactory.deploy();
 
   await certificate.deployed();
 
-  console.log(`certificate contract deployed to ${lock.address}`);
+  console.log(`certificate contract deployed to ${certificate.address}`);
 }
 
 // We recommend this pattern to be able to use async/await everywhere
