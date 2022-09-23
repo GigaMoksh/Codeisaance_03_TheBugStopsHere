@@ -1,19 +1,23 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 import ListTile from "./ListTile";
 import { AppContext } from "../../context/AppContext";
 
 const AdminPending = () => {
-  const doc = {
-    name: "Omkar Bhostekar",
-    filename: "Birth certificate",
-  };
+  useEffect(() => {
+    (async () => {
+      queryAdminRequestsByStatus("pending");
+    })();
+  }, []);
 
-  const onApproveListener = () => {
-    console.log("clicked");
-    addCertificate();
-  };
-
-  const { addCertificate } = useContext(AppContext);
+  const {
+    addCertificate,
+    verifyCertificate,
+    addNewDocRequest,
+    queryUserRequestsByUserId,
+    queryAdminRequestsByStatus,
+    adminRequests,
+    setAdminRequests,
+  } = useContext(AppContext);
 
   return (
     <div class="h-full text-gray-900 bg-gray-200">
@@ -28,9 +32,11 @@ const AdminPending = () => {
               <th class="text-left p-2 px-5">FileName</th>
               <th></th>
             </tr>
-            <ListTile doc={doc} onApprove={onApproveListener} />
-            <ListTile doc={doc} onApprove={onApproveListener} />
-            <ListTile doc={doc} onApprove={onApproveListener} />
+            {adminRequests.length !== 0 ? (
+              adminRequests.map((doc) => <ListTile doc={doc} />)
+            ) : (
+              <div className="py-8">No Pending requests</div>
+            )}
           </tbody>
         </table>
       </div>
