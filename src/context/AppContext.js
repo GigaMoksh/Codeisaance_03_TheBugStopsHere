@@ -1,11 +1,6 @@
 import { createContext, useState, useEffect } from "react";
 import { useMoralis, useMoralisQuery } from "react-moralis";
-import {
-  amazonAbi,
-  amazonCoinAddress,
-  certificateAbi,
-  certificateAddress,
-} from "../lib/constants";
+import { certificateAbi, certificateAddress } from "../lib/constants";
 import { ethers } from "ethers";
 
 export const AppContext = createContext();
@@ -115,7 +110,7 @@ export const AppProvider = ({ children }) => {
   };
 
   const addCertificate = async (username, filename, url, userId) => {
-    const id = Math.random().toString(36);
+    const id = Math.random().toString(36).substring(2, 15);
     const key = "1234567890";
     const options = {
       contractAddress: certificateAddress,
@@ -131,19 +126,22 @@ export const AppProvider = ({ children }) => {
       },
     };
     // console.log(user);
+    console.log("before execute");
     const res = await Moralis.executeFunction(options);
-    console.log(res);
-    updateToApproved(userId, url, res.hash);
+    console.log("afeter execute function");
+    console.log("res: ", res);
+    updateToApproved(userId, filename, res.hash, id);
   };
 
-  const updateToApproved = async (userId, fileurl, token) => {
+  const updateToApproved = async (userId, filename, token, certId) => {
     const Request = Moralis.Object.extend("requests");
     const query = new Moralis.Query(Request);
     query.equalTo("userId", userId);
-    query.equalTo("fileurl", fileurl);
+    query.equalTo("filename", filename);
     const obj = await query.first();
     obj.set("status", "approved");
     obj.set("token", token);
+    obj.set("certId", certId);
     obj.save().then(
       (obj) => {
         queryAdminRequestsByStatus("pending");

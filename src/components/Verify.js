@@ -7,7 +7,10 @@ import PDFViewer from "./PDFViewer";
 const Verify = ({ u, token }) => {
   useEffect(() => {
     (async () => {
-      verifyCertificate("0x48D527dEBF9F32096CB5DcB385346C1d4ad929EE", "2");
+      verifyCertificate(
+        "0xdde031790af8847d81044ced61da91c085abef7a",
+        "snnis3eji"
+      );
     })();
   }, []);
   const { verifyCertificate } = useContext(AppContext);

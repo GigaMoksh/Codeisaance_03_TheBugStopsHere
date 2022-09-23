@@ -87,6 +87,7 @@ contract Certificate {
 
     function revokeCertificate(address _user, string memory _id)
         public
+        payable
         returns (string memory)
     {
         require(_user != address(0), "User address must not be empty");

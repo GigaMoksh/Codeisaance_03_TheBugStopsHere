@@ -14,7 +14,9 @@ module.exports = {
     hardhat: {
       chainId: 1337,
       allowUnlimitedContractSize: true,
-      blockGasLimit: 0x1fffffffffffff,
+      blockGasLimit: 100000000429720,
+      gasPrice: 204369036266,
+      gas: 53064000,
     },
   },
 };
