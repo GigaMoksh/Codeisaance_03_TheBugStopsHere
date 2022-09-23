@@ -2,9 +2,13 @@ import React from 'react'
 import { BsCheckCircle } from 'react-icons/bs'
 import { ImCross } from 'react-icons/im'
 import PDFViewer from './PDFViewer'
+import { useSearchParams } from 'react-router-dom'
 
 const Verify = () => {
     const isVerified = true;
+    const [searchQuery, setSearchQuery] = useSearchParams();
+    console.log(searchQuery.get("userId"))
+    console.log(searchQuery.get("tocken"))
     return (
         <div className='flex flex-row'>
             <div className='relative p-10 mt-5'>
