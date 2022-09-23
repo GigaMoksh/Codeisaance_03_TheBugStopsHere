@@ -9,7 +9,10 @@ import { AppProvider } from "./context/AppContext";
 import Admin from "./components/admin/Admin";
 const App = () => {
   return (
-    <MoralisProvider>
+    <MoralisProvider
+      serverUrl="https://9srnar891yfo.usemoralis.com:2053/server"
+      appId="BJ2TKeyH7s7ywXf8ZGXwWxAhZkF9vV7mnlr5FW1o"
+    >
       <AppProvider>
         <Router>
           <div>
