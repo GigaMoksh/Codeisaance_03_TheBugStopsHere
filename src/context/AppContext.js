@@ -1,11 +1,6 @@
 import { createContext, useState, useEffect } from "react";
 import { useMoralis, useMoralisQuery } from "react-moralis";
-import {
-  amazonAbi,
-  amazonCoinAddress,
-  certificateAbi,
-  certificateAddress,
-} from "../lib/constants";
+import { certificateAbi, certificateAddress } from "../lib/constants";
 import { ethers } from "ethers";
 
 export const AppContext = createContext();
@@ -20,6 +15,7 @@ export const AppProvider = ({ children }) => {
   const [adminRequests, setAdminRequests] = useState([]);
   const [userDocs, setUserDocs] = useState([]);
   const [isDocsLoading, setIsDocsLoading] = useState(false);
+  const [isAdmin, setIsAdmin] = useState(false);
 
   const {
     authenticate,
@@ -48,6 +44,8 @@ export const AppProvider = ({ children }) => {
         setUsername(currentUsername);
         const account = await user?.get("ethAddress");
         setCurrentAccount(account);
+        console.log("current account", account);
+        setIsAdmin(account === "0xdde031790af8847d81044ced61da91c085abef7a");
         const formatAccount = account.slice(0, 5) + "..." + account.slice(-5);
         setFormattedAccount(formatAccount);
         console.log(account);
@@ -56,6 +54,7 @@ export const AppProvider = ({ children }) => {
       } else {
         setCurrentAccount("");
         setFormattedAccount("");
+        setIsAdmin(false);
       }
     })();
   }, [
@@ -114,8 +113,21 @@ export const AppProvider = ({ children }) => {
     setAdminRequests(res);
   };
 
+  const getRequestDetail = async (userId, token) => {
+    const Request = Moralis.Object.extend("requests");
+    const query = new Moralis.Query(Request);
+    query.equalTo("userId", userId);
+    query.equalTo("token", token);
+    const results = await query.find();
+    const res = results.map((result) => {
+      return result.attributes;
+    });
+    console.log(res);
+    return res[0];
+  };
+
   const addCertificate = async (username, filename, url, userId) => {
-    const id = Math.random().toString(36);
+    const id = Math.random().toString(36).substring(2, 15);
     const key = "1234567890";
     const options = {
       contractAddress: certificateAddress,
@@ -131,19 +143,22 @@ export const AppProvider = ({ children }) => {
       },
     };
     // console.log(user);
+    console.log("before execute");
     const res = await Moralis.executeFunction(options);
-    console.log(res);
-    updateToApproved(userId, url, res.hash);
+    console.log("afeter execute function");
+    console.log("res: ", res);
+    updateToApproved(userId, filename, res.hash, id);
   };
 
-  const updateToApproved = async (userId, fileurl, token) => {
+  const updateToApproved = async (userId, filename, token, certId) => {
     const Request = Moralis.Object.extend("requests");
     const query = new Moralis.Query(Request);
     query.equalTo("userId", userId);
-    query.equalTo("fileurl", fileurl);
+    query.equalTo("filename", filename);
     const obj = await query.first();
     obj.set("status", "approved");
     obj.set("token", token);
+    obj.set("certId", certId);
     obj.save().then(
       (obj) => {
         queryAdminRequestsByStatus("pending");
@@ -154,18 +169,17 @@ export const AppProvider = ({ children }) => {
     );
   };
 
-  const verifyCertificate = async () => {
-    const id = "2";
+  const verifyCertificate = async (userId, certId) => {
     const options = {
       contractAddress: certificateAddress,
       functionName: "getCertificate",
       abi: certificateAbi,
       params: {
-        _user: "0xdde031790Af8847d81044CEd61dA91C085abef7A",
-        _id: id,
+        _user: userId,
+        _id: certId,
       },
     };
-    // console.log(user);
+    console.log("before verification");
     const res = await Moralis.executeFunction(options);
     console.log(res);
   };
@@ -184,6 +198,8 @@ export const AppProvider = ({ children }) => {
         userDocs,
         setUserDocs,
         isDocsLoading,
+        getRequestDetail,
+        isAdmin,
       }}
     >
       {children}
