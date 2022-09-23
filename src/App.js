@@ -1,4 +1,4 @@
-import React from "react";
+import React,{useEffect} from "react";
 import Header from "./components/header/Header";
 import Footer from "./components/footer/Footer";
 import { MoralisProvider } from "react-moralis";
@@ -10,7 +10,13 @@ import Admin from "./components/admin/Admin";
 import UploadDoc from "./components/user/UploadDoc";
 import Verify from "./components/Verify";
 import VerifyDocument from "./components/VerifyDocument";
+import AOS from "aos";
+import "aos/dist/aos.css";
 const App = () => {
+
+  useEffect(() => {
+    AOS.init();
+  }, []);
   return (
     <MoralisProvider
       serverUrl="https://9srnar891yfo.usemoralis.com:2053/server"

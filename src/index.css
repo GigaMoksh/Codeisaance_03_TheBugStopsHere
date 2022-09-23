@@ -86,7 +86,7 @@ p{
     line-height: 1.2;
 }
 p:last-of-type{
-    margin-bottom: 0em;
+    /* margin-bottom: 0em; */
 } 
 .title{
     font-weight: 500;
@@ -145,7 +145,7 @@ p:last-of-type{
 }
 .button-dark:hover,
 .button-dark:focus {
-    color: #00ff6c;
+    color: #fff;
     background-color: #232323;
 }
 @media (min-width:60rem) {

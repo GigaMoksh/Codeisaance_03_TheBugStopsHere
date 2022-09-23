@@ -15,3 +15,238 @@
         padding-top: 25vh;
     }
 }
+
+
+
+
+
+
+/* updated */
+
+
+/*=============== GOOGLE FONTS ===============*/
+@import url("https://fonts.googleapis.com/css2?family=Oxanium:wght@400;600;700&display=swap");
+
+/*=============== VARIABLES CSS ===============*/
+:root {
+  --header-height: 3.5rem;
+
+  /*========== Colors ==========*/
+  /*Color mode HSL(hue, saturation, lightness)*/
+  --first-color: hsl(203, 71%, 60%);
+  --second-color: hsl(277, 56%, 68%);
+  --text-color: hsl(203, 8%, 98%);
+  --text-color-light: hsl(203, 8%, 80%);
+  --body-color: hsl(259, 20%, 18%);
+
+  /*========== Font and typography ==========*/
+  /*.5rem = 8px | 1rem = 16px ...*/
+  --body-font: 'Oxanium', cursive;
+  --biggest-font-size: 2.25rem;
+  --h2-font-size: 1.25rem;
+  --normal-font-size: .938rem;
+  --smaller-font-size: .75rem;
+
+  /*========== Font weight ==========*/
+  --font-semi-bold: 600;
+
+  /*========== z index ==========*/
+  --z-fixed: 100;
+}
+
+/* Responsive typography */
+@media screen and (min-width: 1024px) {
+  :root {
+    --biggest-font-size: 4rem;
+    --h2-font-size: 1.5rem;
+    --normal-font-size: 1rem;
+    --smaller-font-size: .813rem;
+  }
+}
+
+/* body {
+  font-family: var(--body-font);
+  font-size: var(--normal-font-size);
+  background-color: var(--body-color);
+  color: var(--text-color);
+} */
+
+ul {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+.home{
+  position: relative;
+  font-family: var(--body-font);
+  font-size: var(--normal-font-size);
+  background-color: var(--body-color);
+  color: var(--text-color);
+  height: 100vh;
+}
+
+.home__container{
+  position: relative;
+  padding: 7rem 0 2rem;
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: space-around;
+  align-items: center;
+  height: 100%;
+  padding: 6rem;
+}
+
+.home__info{
+    flex-basis: 0;
+    flex-grow: 1;
+
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: space-evenly;
+}
+
+.home__group{
+    flex-basis: 0;
+    flex-grow: 1;
+}
+.home__title{
+  font-size: var(--biggest-font-size);
+  margin-bottom: .75rem;
+  text-align: left;
+}
+
+.home__title span{
+  background: linear-gradient(90deg, var(--second-color) 0%, var(--first-color) 100%);
+  -webkit-background-clip: text;
+  color: transparent;
+}
+
+.home__desc{
+  color: var(--text-color-light);
+  margin-bottom: 1.5rem;
+  text-align: left  !important;
+}
+
+.home__button{
+  display: inline-block;
+  background: linear-gradient(90deg, var(--second-color) 0%, var(--first-color) 100%);
+  padding: 1rem 2rem;
+  border-radius: .25rem;
+  color: var(--text-color);
+  font-weight: var(--font-semi-bold);
+  transform: box-shadow .4s;
+  
+}
+
+.home_button:hover{
+  box-shadow: 0 8px 48px hsla(203, 71%, 25%, .5);
+}
+
+.home__group{
+  position: relative;
+}
+
+.home__images,
+.home__data{
+  display: grid;
+}
+
+.home__img-eth{
+  width: 150px;
+  justify-self: center;
+}
+
+.home__img-eth img{
+  filter: drop-shadow(0 4px 32px hsla(203, 71%, 60%, .5));
+  animation: float-eth 2s ease-in-out infinite;
+}
+
+.home__img-orbe{
+  width: 280px;
+  justify-self: center;
+}
+
+.home__data{
+  position: absolute;
+  top: -3rem;
+  right: 1.5rem;
+  row-gap: 1.25rem;
+}
+
+.home__data-number{
+  font-size: var(--h2-font-size);
+  font-weight: var(--font-semi-bold);
+}
+
+.home__data-subtitle{
+  font-size: var(--smaller-font-size);
+}
+
+/* Shapes */
+
+.home__shape-small,
+.home__shape-big-1,
+.home__shape-bog-2{
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(90px);
+}
+
+.home__shape-small{
+  width: 150px;
+  height: 150px;
+  background-color: var(--first-color);
+  top: -2.5rem;
+  left: -1.5rem;
+}
+
+.home__shape-big-1,
+.home__shape-big-2{
+  width: 250px;
+  height: 250px;
+}
+
+.home__shape-big-1{
+  background-color: var(--first-color);
+  top: 16rem;
+  right: -6.5rem;
+}
+
+.home__shape-big-2{
+  background-color: var(--second-color);
+  left: -3.5rem;
+  right: -4rem;
+}
+
+.home__shape-bg{
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  mix-blend-mode: soft-light;
+  opacity: .3;
+}
+/* Animation ethereum */
+
+@keyframes float-eth{
+  0%{
+    transform: translateY(0.25rem);
+  }
+  50%{
+    transform: translateY(2rem);
+  }
+  100%{
+    transform: translateY(0.25rem);
+  }
+}
