@@ -6,10 +6,11 @@ import Home from "./components/home/Home";
 import UserDashboard from "./components/user/UserDashboard";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import { AppProvider } from "./context/AppContext";
+import Admin from "./components/admin/Admin";
 const App = () => {
   return (
-    <AppProvider>
-      <MoralisProvider>
+    <MoralisProvider>
+      <AppProvider>
         <Router>
           <div>
             <Header />
@@ -19,13 +20,13 @@ const App = () => {
               <Route exact path="/userDashboard" element={<UserDashboard />} />
               <Route exact path="/login" element={<h1>vaibhav</h1>} />
               <Route exact path="/recovery-password" element={<h1>Login</h1>} />
+              <Route exact path="/admin" element={<Admin />} />
               <Route path="*" element={<h1>Login</h1>} />
             </Routes>
-            <Footer />
           </div>
         </Router>
-      </MoralisProvider>
-    </AppProvider>
+      </AppProvider>
+    </MoralisProvider>
   );
 };
 
