@@ -23,8 +23,8 @@ const App = () => {
               <Route exact path="/userDashboard" element={<UserDashboard />} />
               <Route exact path="/login" element={<h1>vaibhav</h1>} />
               <Route exact path="/recovery-password" element={<h1>Login</h1>} />
+              <Route path="*" element={<h1>404, Not Found!</h1>} />
               <Route exact path="/admin" element={<Admin />} />
-              <Route path="*" element={<h1>Login</h1>} />
             </Routes>
           </div>
         </Router>
