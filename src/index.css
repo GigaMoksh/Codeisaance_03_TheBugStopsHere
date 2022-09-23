@@ -1,0 +1,157 @@
+@import url('https://fonts.googleapis.com/css2?family=Raleway:wght@300;400;700;900&display=swap');
+
+*{
+    box-sizing: border-box;
+    transition: all ease-out 300ms;
+}
+
+body{
+    margin: 0;
+    font-family: 'Raleway', sans-serif;
+    text-align: center;
+}
+
+::-webkit-scrollbar{
+    display: none;
+}
+img{
+    width: 100%;
+    height: auto;
+}
+.container{
+    width: 95%;
+    max-width: 70em;
+    margin: 0 auto;
+}
+
+.clearfix::after,
+section::after,
+footer::after{
+    content: ' ';
+    display: block;
+    clear: both;
+}
+
+/* column system
+================= */
+[class^=col-] {
+    margin-top: 1em;
+}
+
+[class^=col-]:first-child {
+    margin-top: 0em;
+}
+
+.col-1{
+    width: 33.33%;
+    float: left;
+}
+@media (min-width: 60rem) {
+    [class^=col-] {
+        float: left;
+        padding: 0 1em;
+        margin-top: 0em;
+    }
+
+    [class^=col-]:first-child {
+        padding-left: 0em;
+    }
+
+    [class^=col-]:last-child {
+        padding-right: 0em;
+    }
+
+    .col-3{
+        width: 50%;
+    }
+
+    .col-1{
+        width: 16.66666%;
+    }
+}
+
+/* typography
+================= */
+
+h1{
+    font-weight: 300;
+    font-size: 1.5em;
+}
+p{
+    margin-top: 0em;
+    line-height: 1.2;
+}
+p:last-of-type{
+    margin-bottom: 0em;
+} 
+.title{
+    font-weight: 900;
+    font-size: 2.5rem;
+    margin: 1em 0 2em 0;
+}
+.title span{
+    font-weight: 300;
+    display: block;
+    font-size: 0.9em;
+}
+.title-cta{
+    margin: 0.2em 0 0.5em 0;
+}
+.unstyled-list{
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+}
+@media (min-width:60rem) {
+    p{
+        font-size: 1.2em;
+    }
+    .title{
+        font-size: 3.5em;
+    }
+}
+/* buttons
+================= */
+
+.button{
+    display: inline-block;
+    text-decoration: none;
+    font-size: 1.15rem;
+    text-transform: uppercase;
+    border: 2px solid;
+    padding: 0.5em 1.75em;
+}
+.button-accent{
+    color: rgb(34, 244, 44);
+    border-color: rgb(34, 244, 44);
+}
+
+.button-accent:hover,
+.button-accent:focus {
+    color: black;
+    background-color: rgb(34, 244, 44, 0.5);
+    font-weight: 600;
+}
+.button-dark{
+    color: #232323;
+    border-color: #232323;
+}
+.button-dark:hover,
+.button-dark:focus {
+    color: #00ff6c;
+    background-color: #232323;
+}
+@media (min-width:60rem) {
+    .button{
+        font-size: 1.5rem;
+    }
+}
+.button-small{
+    font-size: 0.7rem;
+    font-weight: 700;
+}
+@media (max-width:18.75rem) {
+    .button-small{
+        font-size: 0.5rem;
+    }
+}
