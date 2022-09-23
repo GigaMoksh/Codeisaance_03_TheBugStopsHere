@@ -5,7 +5,7 @@ const Footer = () => {
     <footer>
         <div className="container">
             <div className="col-3">
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Iure sunt dolorem saepe repellat impedit debitis ratione nisi voluptatem? Eligendi explicabo accusantium ipsa similique nam asperiores vitae delectus sit nihil aliquam.
+                <p>A Decentralized Certificate Issuance and Verification System to create certificates that are Immutable, Cryptographically Secured, and have Zero Downtime. All powered by decentralized Ethereum Smart Contracts.
                 </p>
             </div>
 

@@ -8,6 +8,7 @@ import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import { AppProvider } from "./context/AppContext";
 import Admin from "./components/admin/Admin";
 import UploadDoc from "./components/user/UploadDoc";
+import Verify from "./components/Verify";
 const App = () => {
   return (
     <MoralisProvider
@@ -27,6 +28,7 @@ const App = () => {
               <Route path="*" element={<h1>404, Not Found!</h1>} />
               <Route exact path="/admin" element={<Admin />} />
               <Route exact path="/upload-doc" element={<UploadDoc />} />
+              <Route exact path="verify" element={<Verify />} />
             </Routes>
           </div>
         </Router>
@@ -35,4 +37,4 @@ const App = () => {
   );
 };
 
-export default App;
+export default App

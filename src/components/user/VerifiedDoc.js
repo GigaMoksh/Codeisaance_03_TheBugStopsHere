@@ -16,8 +16,8 @@ const VerifiedDoc = () => {
         <table class="w-full text-md bg-white shadow-md rounded mb-4">
           <tbody>
             <tr class="border-b">
-              <th class="text-left p-2 px-5">Name</th>
-              <th class="text-left p-2 px-5">FileName</th>
+              <th class="text-left p-2 px-5 text-center">Name</th>
+              <th class="text-left p-2 px-5 text-center">FileName</th>
               <th></th>
             </tr>
             <ListTile doc={doc} />
@@ -25,7 +25,7 @@ const VerifiedDoc = () => {
             <ListTile doc={doc} />
           </tbody>
         </table>
-        <Link to="/upload-doc">
+        <Link className="w-fit" to="/upload-doc">
           <IoAddCircleOutline className="text-4xl" />
         </Link>
       </div>
