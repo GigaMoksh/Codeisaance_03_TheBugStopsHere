@@ -30,7 +30,7 @@ const UserDashboard = () => {
           </SidebarFooter>
         </ProSidebar>
       </div>
-      <div className=''>
+      <div className='h-screen w-full bg-red-50'>
         {
           current==0
           ?

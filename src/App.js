@@ -7,6 +7,7 @@ import UserDashboard from "./components/user/UserDashboard";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import { AppProvider } from "./context/AppContext";
 import Admin from "./components/admin/Admin";
+import UploadDoc from "./components/user/UploadDoc";
 const App = () => {
   return (
     <MoralisProvider
@@ -25,6 +26,7 @@ const App = () => {
               <Route exact path="/recovery-password" element={<h1>Login</h1>} />
               <Route path="*" element={<h1>404, Not Found!</h1>} />
               <Route exact path="/admin" element={<Admin />} />
+              <Route exact path="/upload-doc" element={<UploadDoc />} />
             </Routes>
           </div>
         </Router>
