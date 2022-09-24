@@ -4,7 +4,7 @@ import { ConnectButton } from 'web3uikit'
 const Header = () => {
   return (
     <header>
-        <h1 className="logo go_left">DigiSec</h1>
+        <h1 className="logo go_left my_logo">DigiSuite</h1>
         <nav className="navbar">
             {/* <ul>
                 <li><a href="index.html">Home</a></li>

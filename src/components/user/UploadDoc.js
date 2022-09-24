@@ -43,7 +43,8 @@ const UploadDoc = () => {
       {isUploading ? (
         <div><SyncLoader color="#36d7b7" /></div>
       ) : (
-        <form className="flex flex-col items-center ">
+        <form className="flex flex-col items-center p-10 bg-cyan-200 shadow-md">
+          <div className="my-5"><h1 className="TEXT-CENTER">Upload Document</h1></div>
           <div class="form-floating mb-3 xl:w-96">
             <input
               type="text"

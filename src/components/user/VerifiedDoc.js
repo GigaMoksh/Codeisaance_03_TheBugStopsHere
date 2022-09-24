@@ -29,7 +29,7 @@ const VerifiedDoc = () => {
             ) : userDocs.length !== 0 ? (
               userDocs.map((doc) => <ListTile doc={doc} />)
             ) : (
-              <div className="py-8">No Pending requests</div>
+              <div className="py-8">No Verified documents</div>
             )}
           </tbody>
         </table>
