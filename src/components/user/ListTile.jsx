@@ -1,7 +1,7 @@
 import React from "react";
 import { Link, createSearchParams } from "react-router-dom";
 
-const ListTile = ({ doc }) => {
+const ListTile = ({ doc, isRejected }) => {
   var date = new Date(doc.updatedAt);
   var options = { year: "numeric", month: "long", day: "numeric" };
   return (
@@ -17,12 +17,16 @@ const ListTile = ({ doc }) => {
             View
           </Link>
         </button>
-        <button
-          type="button"
-          class="mr-3 text-sm bg-green-500 hover:bg-green-700 text-white py-1 px-2 rounded focus:outline-none focus:shadow-outline"
-        >
-          Copy Link
-        </button>
+        {isRejected ? (
+          <></>
+        ) : (
+          <button
+            type="button"
+            class="mr-3 text-sm bg-green-500 hover:bg-green-700 text-white py-1 px-2 rounded focus:outline-none focus:shadow-outline"
+          >
+            Copy Link
+          </button>
+        )}
       </td>
     </tr>
   );
