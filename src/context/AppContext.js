@@ -2,6 +2,7 @@ import { createContext, useState, useEffect } from "react";
 import { useMoralis, useMoralisQuery } from "react-moralis";
 import { certificateAbi, certificateAddress } from "../lib/constants";
 import { ethers } from "ethers";
+import { Web3Storage } from "web3.storage";
 
 export const AppContext = createContext();
 
@@ -10,12 +11,17 @@ export const AppProvider = ({ children }) => {
   const [formattedAccount, setFormattedAccount] = useState("");
   const [nickname, setNickname] = useState("");
   const [username, setUsername] = useState("");
-  const [addNewRequest, setAddNewRequest] = useState("");
+  const [addNewRequest, setAddNewRequest] = useState(false);
   const [newReqIsLoading, setNewReqIsLoading] = useState(false);
   const [adminRequests, setAdminRequests] = useState([]);
   const [userDocs, setUserDocs] = useState([]);
   const [isDocsLoading, setIsDocsLoading] = useState(false);
   const [isAdmin, setIsAdmin] = useState(false);
+  const [isUploading, setIsUploading] = useState(false);
+  const client = new Web3Storage({
+    token:
+      "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJkaWQ6ZXRocjoweEU1RDkwQTY4NzAxNTdhOUJjQjU5Nzk3MjI1NzcxMjU4MUQ0NzkwQTEiLCJpc3MiOiJ3ZWIzLXN0b3JhZ2UiLCJpYXQiOjE2NjM5NzM2MjI0NTIsIm5hbWUiOiJEaWdpc2VjIn0.eEIg4_etr_LMXjGG1e1YADA6iRgLtPKs4lfzr82te2Y",
+  });
 
   const {
     authenticate,
@@ -68,6 +74,8 @@ export const AppProvider = ({ children }) => {
   ]);
 
   const addNewDocRequest = async (filename, fileurl) => {
+    setNewReqIsLoading(true);
+    setAddNewRequest(false);
     const Request = Moralis.Object.extend("requests");
     const request = new Request();
     request.set("userId", user.attributes.ethAddress);
@@ -77,12 +85,19 @@ export const AppProvider = ({ children }) => {
     request.set("username", user.attributes.username);
     request.save().then(
       (request) => {
-        alert("New object created with objectId: " + request.id);
+        console.log("New object created with objectId: " + request.id);
+        setNewReqIsLoading(false);
+        setAddNewRequest(true);
+        return true;
       },
       (error) => {
-        alert("Failed to create new object, with error code: " + error.message);
+        console.log(
+          "Failed to create new object, with error code: " + error.message
+        );
+        return false;
       }
     );
+    return false;
   };
 
   const queryUserRequestsByUserId = async (status) => {
@@ -184,6 +199,14 @@ export const AppProvider = ({ children }) => {
     console.log(res);
   };
 
+  const uploadFile = async (file) => {
+    setIsUploading(true);
+    const cid = await client.put([file]);
+    console.log("stored cid: ", cid);
+    setIsUploading(false);
+    return cid;
+  };
+
   return (
     <AppContext.Provider
       value={{
@@ -200,6 +223,10 @@ export const AppProvider = ({ children }) => {
         isDocsLoading,
         getRequestDetail,
         isAdmin,
+        uploadFile,
+        isUploading,
+        newReqIsLoading,
+        addNewRequest,
       }}
     >
       {children}
