@@ -25,7 +25,6 @@
 
 
 /*=============== GOOGLE FONTS ===============*/
-@import url("https://fonts.googleapis.com/css2?family=Oxanium:wght@400;600;700&display=swap");
 
 /*=============== VARIABLES CSS ===============*/
 :root {
@@ -119,7 +118,7 @@ img {
     flex-grow: 1;
 }
 .home__title{
-  font-size: var(--biggest-font-size);
+  font-size: 2rem;
   margin-bottom: .75rem;
   text-align: left;
 }
@@ -128,6 +127,7 @@ img {
   background: linear-gradient(90deg, var(--second-color) 0%, var(--first-color) 100%);
   -webkit-background-clip: text;
   color: transparent;
+  font-size: 4rem;
 }
 
 .home__desc{

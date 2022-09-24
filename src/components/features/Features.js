@@ -4,7 +4,7 @@ import './feature.css'
 import { BsFillCheckCircleFill } from 'react-icons/bs'
 const Features = () => {
     return (
-        <div className='flex h-screen featured-area p-10'>
+        <div className='flex h-screen featured-area p-10' id='explore'>
             <div className='basis-0 grow' data-aos="fade-right" data-aos-duration="1500">
                 <img src={FeatureImg} alt="" />
             </div>

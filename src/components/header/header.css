@@ -5,23 +5,25 @@ header{
     margin: 1em;
     z-index: 1;
 }
+
 .logo{
     /* background-image: linear-gradient(236deg, #EADEDB -7%, #000000 40%, #5d7e5d 75%); */
     color: rgb(255, 255, 255);
     border: 2px solid white;
-    font-size: 2em;
+    font-size: 1.5em;
     font-weight: 600;
     margin: 0px;
     padding: 0.1em 0.4em;
-    border-radius: 1em;
+    font-family: 'Oxanium', cursive;;
+    /* border-radius: 1em; */
 }
-@media (min-width:60rem) {
+/* @media (min-width:60rem) {
     .logo{
         font-size: 2.5em;
         padding: 0.1em 0.4em;
         border-radius: 1em;
     }
-}
+} */
 nav ul{
     margin: 0;
     padding: 0;
@@ -109,3 +111,40 @@ nav a:hover,nav a:focus{
         transform: scale(1.5);
     }
 }
+
+.my_logo{
+
+}
+
+
+.my_logo {
+    text-decoration: none;
+    border: 2px solid #764abc;
+    color: #764abc;
+    padding: 10px 20px;
+    /* border-radius: 25px; */
+    position: relative;
+    transition: all 1s;
+    overflow: hidden;
+  }
+  
+  .my_logo::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #764abc;
+    transition: all 1s;
+    z-index: -1;
+    transform: translateX(-100%);
+  }
+  
+  .my_logo:hover::before {
+    transform: translateX(0);
+  }
+  .my_logo:hover {
+    color: #fff;
+  }
+  

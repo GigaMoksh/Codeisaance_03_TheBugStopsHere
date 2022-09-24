@@ -24,7 +24,7 @@ const UserDashboard = () => {
         <ProSidebar>
           <SidebarHeader>
             <h1 className="text-bold mt-[16px] mb-[16px] text-center">
-              DigiSec
+              DigiSuite
             </h1>
           </SidebarHeader>
           <Menu iconShape="square">
