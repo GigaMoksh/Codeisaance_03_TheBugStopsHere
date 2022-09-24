@@ -39,10 +39,10 @@ const Home_hero = () => {
             <div class="home__container">
                 <div class="home__info">
                     <h1 class="home__title">
-                        <span>A platfotm for </span><br />
+                        <span>A platform for </span><br />
                         {text} <br />
                     </h1>
-                    <p class="home__desc mb-4">A Decentralized Certificate Issuance and Verification System to create certificates that are Immutable,Cryptographically Secured, and have Zero Downtime. All powered by decentralized Ethereum Smart Contracts.
+                    <p class="home__desc mb-4">A Decentralized Document Verification System to verify the documents and make them Immutable,   Cryptographically Secured, and have Zero Downtime. All powered by decentralized Ethereum Smart Contracts and IPFS Decentralized Database.
                     </p>
                     <a href="#explore" class="home__button">Explore</a>
                 </div>
