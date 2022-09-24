@@ -16,6 +16,7 @@ import { ConnectButton } from "web3uikit";
 import VerifiedDoc from "./VerifiedDoc";
 import PendingDoc from "./PendingDoc";
 import UserSetting from "./UserSetting";
+import RejectedDoc from "./RejectedDoc";
 const UserDashboard = () => {
   const [current, setcurrent] = useState(0);
   return (
@@ -47,15 +48,14 @@ const UserDashboard = () => {
               >
                 Pending
               </MenuItem>
+              <MenuItem
+                onClick={() => {
+                  setcurrent(2);
+                }}
+              >
+                Rejected
+              </MenuItem>
             </SubMenu>
-            <MenuItem
-              onClick={() => {
-                setcurrent(3);
-              }}
-              icon={<BsGear />}
-            >
-              Setting
-            </MenuItem>
           </Menu>
           <SidebarFooter className="mt-auto p-10">
             <ConnectButton />
@@ -68,7 +68,7 @@ const UserDashboard = () => {
         ) : current == 1 ? (
           <PendingDoc />
         ) : (
-          <UserSetting />
+          <RejectedDoc />
         )}
       </div>
     </div>
