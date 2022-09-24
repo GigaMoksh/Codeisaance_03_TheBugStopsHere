@@ -13,7 +13,7 @@ const Admin = () => {
   console.log("isAdmin", isAdmin);
   return (
     <div>
-      {true ? (
+      {isAdmin ? (
         <div className="h-screen flex">
           <ProSidebar>
             <SidebarHeader>
