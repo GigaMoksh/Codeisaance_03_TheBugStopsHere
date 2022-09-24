@@ -1,6 +1,13 @@
-import React from "react";
+import React, { useContext } from "react";
+import { AppContext } from "../../context/AppContext";
 
 const PendingListTile = ({ doc }) => {
+  const { deleteRequest } = useContext(AppContext);
+
+  const deleteHandler = async () => {
+    deleteRequest(doc.userId, doc.fileurl);
+  };
+
   var date = new Date(doc.updatedAt);
   var options = { year: "numeric", month: "long", day: "numeric" };
   return (
@@ -11,6 +18,7 @@ const PendingListTile = ({ doc }) => {
         <button
           type="button"
           class="mr-3 text-sm bg-red-500 hover:bg-red-700 text-white py-1 px-2 rounded focus:outline-none focus:shadow-outline"
+          onClick={deleteHandler}
         >
           Delete
         </button>

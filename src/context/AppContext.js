@@ -141,6 +141,26 @@ export const AppProvider = ({ children }) => {
     return res[0];
   };
 
+  const deleteRequest = async (userId, fileurl) => {
+    const Request = Moralis.Object.extend("requests");
+    const query = new Moralis.Query(Request);
+    query.equalTo("userId", userId);
+    query.equalTo("status", "pending");
+    query.equalTo("fileurl", fileurl);
+    const obj = await query.first();
+    if (obj) {
+      obj.destroy().then(
+        () => {
+          console.log("deleted");
+          queryUserRequestsByUserId("pending");
+        },
+        (error) => {
+          console.log(error);
+        }
+      );
+    }
+  };
+
   const addCertificate = async (username, filename, url, userId) => {
     const id = Math.random().toString(36).substring(2, 15);
     const key = "1234567890";
@@ -162,24 +182,33 @@ export const AppProvider = ({ children }) => {
     const res = await Moralis.executeFunction(options);
     console.log("afeter execute function");
     console.log("res: ", res);
-    updateToApproved(userId, filename, res.hash, id);
+    updateToStatus("approved", "pending", userId, filename, res.hash, id);
   };
 
-  const updateToApproved = async (userId, filename, token, certId) => {
+  const updateToStatus = async (
+    status,
+    fetch,
+    userId,
+    filename,
+    token,
+    certId
+  ) => {
     const Request = Moralis.Object.extend("requests");
     const query = new Moralis.Query(Request);
     query.equalTo("userId", userId);
     query.equalTo("filename", filename);
     const obj = await query.first();
-    obj.set("status", "approved");
+    obj.set("status", status);
     obj.set("token", token);
     obj.set("certId", certId);
     obj.save().then(
       (obj) => {
-        queryAdminRequestsByStatus("pending");
+        queryAdminRequestsByStatus(fetch);
       },
       (error) => {
-        alert("Failed to update object, with error code: " + error.message);
+        console.log(
+          "Failed to update object, with error code: " + error.message
+        );
       }
     );
   };
@@ -228,6 +257,8 @@ export const AppProvider = ({ children }) => {
         isUploading,
         newReqIsLoading,
         addNewRequest,
+        deleteRequest,
+        updateToStatus,
       }}
     >
       {children}

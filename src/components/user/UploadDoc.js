@@ -19,21 +19,21 @@ const UploadDoc = () => {
   const onSubmitClickListener = async () => {
     console.log(file);
     if (!file) return;
-    // const cid = await uploadFile(file);
-    // const url = "https://" + cid + ".ipfs.w3s.link/" + rawFileName;
-    // console.log(url);
-    var fileReader = new FileReader();
-    var base64;
-    fileReader.onload = function (fileLoadedEvent) {
-      base64 = fileLoadedEvent.target.result;
-    };
-    fileReader.readAsDataURL(file);
-    console.log(base64);
-    const enc = encrypt(base64);
-    console.log("encrypted: ", enc);
-    // const res = await addNewDocRequest(filename, url);
-    // await swal("", "Successfully Uploaded!", "success");
-    // navigate("/");
+    const cid = await uploadFile(file);
+    const url = "https://" + cid + ".ipfs.w3s.link/" + rawFileName;
+    console.log(url);
+    const res = await addNewDocRequest(filename, url);
+    await swal("", "Successfully Uploaded!", "success");
+    navigate("/");
+    // var fileReader = new FileReader();
+    // var base64;
+    // fileReader.onload = function (fileLoadedEvent) {
+    //   base64 = fileLoadedEvent.target.result;
+    // };
+    // fileReader.readAsDataURL(file);
+    // console.log(base64);
+    // const enc = encrypt(base64);
+    // console.log("encrypted: ", enc);
   };
   const fileTypes = ["PDF"];
 

@@ -21,12 +21,21 @@ const Admin = () => {
                 Pending Requests
               </MenuItem>
               <MenuItem onClick={() => setCurrent(1)} icon={<BsGear />}>
-                Setting
+                Approved Requests
+              </MenuItem>
+              <MenuItem onClick={() => setCurrent(2)} icon={<BsGear />}>
+                Rejected Requests
               </MenuItem>
             </Menu>
           </ProSidebar>
           <div className="h-screen w-full bg-red-50">
-            {current == 0 ? <AdminPending /> : <div>Settings</div>}
+            {current == 0 ? (
+              <AdminPending type="pending" />
+            ) : current == 1 ? (
+              <AdminPending type="approved" />
+            ) : (
+              <AdminPending type="rejected" />
+            )}
           </div>
         </div>
       ) : (
