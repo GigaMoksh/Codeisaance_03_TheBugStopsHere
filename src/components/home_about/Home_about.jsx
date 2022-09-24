@@ -6,28 +6,28 @@ import { GiCheckedShield } from 'react-icons/gi'
 import { FaUserSecret } from 'react-icons/fa'
 const Home_about = () => {
   return (
-    <div className='grid grid-cols-3 gap-x-10 p-10'>
-      <div className="bg-blue-50 p-4">
+    <div className='grid grid-cols-3 gap-x-10 p-10 my-10 home-about h-screen place-items-center'>
+      <div className="bg-blue-50 p-8 rounded-2xl shadow-md h-fit" data-aos="fade-right" data-aos-duration="2000">
         <div className="flex items-center justify-center">
-          <BiLockAlt className='text-[115px]'/>
+          <BiLockAlt className='text-[100px]'/>
         </div>
         <div className="bg-aliceblue-500 p-1 pt-4 pb-4">
           <h1 className='pb-2 font-medium'>Encrypted</h1>
-          <p className='text-justify'>Each file is encrypted using the Advanced Encryption Standard(AES) before being stored in the blockchain.</p>
+          <p className='text-justify'>Each file is encrypted using the SHA-256 before being stored in the blockchain.</p>
         </div>
       </div>
-      <div className="bg-blue-100 p-4">
+      <div className="bg-blue-100 p-8 rounded-2xl shadow-md h-fit" data-aos="fade-up" data-aos-duration="2000">
         <div className="flex items-center justify-center">
-          <GiCheckedShield className='text-[115px]'/>
+          <GiCheckedShield className='text-[100px]'/>
         </div>
         <div className="p-1 pt-4 pb-4">
           <h1 className='pb-2 font-medium'>Secure</h1>
           <p className='text-justify'>A privately maintained Blockchain ensures that youur data is always secure.</p>
         </div>
       </div>
-      <div className="bg-blue-200 p-4">
+      <div className="bg-blue-200 p-8 rounded-2xl shadow-md h-fit" data-aos="fade-left" data-aos-duration="2000">
         <div className="flex items-center justify-center">
-          <FaUserSecret className='text-[115px]'/>
+          <FaUserSecret className='text-[100px]'/>
         </div>
         <div className="p-1 pt-4 pb-4">
           <h1 className='pb-2 font-medium'>Confidential</h1>
