@@ -1,6 +1,6 @@
 {
   "homepage": "https://prateekv2003.github.io/",
-  "name": "digisec",
+  "name": "digisuite",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -17,6 +17,7 @@
     "moralis-v1": "^1.11.0",
     "react": "^18.1.0",
     "react-animated-text-content": "^1.0.1",
+    "react-copy-to-clipboard": "^5.1.0",
     "react-dom": "^18.1.0",
     "react-drag-drop-files": "^2.3.7",
     "react-icons": "^4.4.0",

@@ -22,7 +22,10 @@ const AdminPending = ({ type }) => {
   return (
     <div class="h-full text-gray-900 bg-gray-200">
       <div class="p-3 flex">
-        <h1 class="text-3xl">Requests</h1>
+        <h1
+          className="capitalize text-4xl"
+          class="text-3xl"
+        >{`${type} Requests`}</h1>
       </div>
       <div class="px-3 py-4 flex justify-center">
         <table class="w-full text-md bg-white shadow-md rounded mb-4">
