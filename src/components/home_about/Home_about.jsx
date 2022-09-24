@@ -14,7 +14,7 @@ const Home_about = () => {
           </div>
           <div className="bg-aliceblue-500 p-1 pt-4 pb-4">
             <h1 className='pb-2 font-medium'>Encrypted</h1>
-            <p className='text-justify'>Each file is encrypted using the SHA-256 before being stored in the blockchain.</p>
+            <p className='text-justify'>Each transaction i.e. Government verifying the document is stored in the blockchain.</p>
           </div>
         </div>
         <div className="bg-blue-100 p-8 rounded-2xl shadow-md h-fit" data-aos="fade-up" data-aos-duration="2000">
@@ -23,7 +23,7 @@ const Home_about = () => {
           </div>
           <div className="p-1 pt-4 pb-4">
             <h1 className='pb-2 font-medium'>Secure</h1>
-            <p className='text-justify'>A privately maintained Blockchain ensures that youur data is always secure.</p>
+            <p className='text-justify'>A privately maintained Blockchain ensures that your data is always secure.</p>
           </div>
         </div>
         <div className="bg-blue-200 p-8 rounded-2xl shadow-md h-fit" data-aos="fade-left" data-aos-duration="2000">
