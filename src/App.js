@@ -13,22 +13,21 @@ import VerifyDocument from "./components/VerifyDocument";
 import AOS from "aos";
 import "aos/dist/aos.css";
 import { useContext } from "react";
+import { AppContext } from "./context/AppContext";
 import Four04 from './components/Four04'
 const App = () => {
 
   useEffect(() => {
     AOS.init();
   }, []);
-
-  const isauth=true;
+  const { isAuthenticated } = useContext(AppContext);
+  // const isauth=true;
+  console.log("isAuthenticated",isAuthenticated);
   return (
-    <MoralisProvider
-      serverUrl="https://9srnar891yfo.usemoralis.com:2053/server"
-      appId="BJ2TKeyH7s7ywXf8ZGXwWxAhZkF9vV7mnlr5FW1o"
-    >
-      <AppProvider>
+    
+      <div>
       {
-        isauth
+        isAuthenticated
         ?
         <Router>
           <div>
@@ -55,9 +54,7 @@ const App = () => {
           </div>
         </Router>
       }
-        
-      </AppProvider>
-    </MoralisProvider>
+      </div>
   );
 };
 

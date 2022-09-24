@@ -3,6 +3,8 @@ import { AppContext } from "../../context/AppContext";
 import FileImg from "../../assests/file.png";
 import { Link, useNavigate } from "react-router-dom";
 import { FileUploader } from "react-drag-drop-files";
+import { SyncLoader } from "react-spinners";
+import swal from "sweetalert";
 
 const UploadDoc = () => {
   const navigate = useNavigate();
@@ -20,8 +22,8 @@ const UploadDoc = () => {
     const url = cid + ".ipfs.w3s.link/" + rawFileName;
     console.log(url);
     const res = await addNewDocRequest(filename, url);
-    if (res) {
-    }
+    await swal("","Successfully Uploaded!", "success")
+    navigate('/')
   };
   const fileTypes = ["PDF"];
 
@@ -35,10 +37,11 @@ const UploadDoc = () => {
   const [file, setFile] = useState("");
   const [filename, setFilename] = useState("");
   const [rawFileName, setRawFileName] = useState("");
+
   return (
     <div className="h-screen w-screen flex items-center justify-center">
       {isUploading ? (
-        <div>Uploading...</div>
+        <div><SyncLoader color="#36d7b7" /></div>
       ) : (
         <form className="flex flex-col items-center ">
           <div class="form-floating mb-3 xl:w-96">
@@ -68,7 +71,7 @@ const UploadDoc = () => {
           </div>
           <div className="flex w-full justify-evenly gap-x-10">
             <Link
-              to="/userDashboard"
+              to="/"
               className="m-auto mt-[16px] w-full block bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded cursor-pointer"
             >
               Back

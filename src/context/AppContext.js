@@ -210,6 +210,7 @@ export const AppProvider = ({ children }) => {
   return (
     <AppContext.Provider
       value={{
+        isAuthenticated,
         isInitialized,
         addCertificate,
         verifyCertificate,
