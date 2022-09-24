@@ -99,7 +99,7 @@ const Verify = () => {
               class="mr-3 text-md bg-green-500 hover:bg-green-700 text-white py-2 px-3 rounded focus:outline-none focus:shadow-outline"
               onClick={() => window.open(etherScanLink, "_blank")}
             >
-              View Certificate
+              View Transaction
             </button>
           )}
         </div>

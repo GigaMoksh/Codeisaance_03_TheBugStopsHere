@@ -5,6 +5,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { FileUploader } from "react-drag-drop-files";
 import { SyncLoader } from "react-spinners";
 import swal from "sweetalert";
+import { encrypt } from "../../utils/secure";
 
 const UploadDoc = () => {
   const navigate = useNavigate();
@@ -18,12 +19,21 @@ const UploadDoc = () => {
   const onSubmitClickListener = async () => {
     console.log(file);
     if (!file) return;
-    const cid = await uploadFile(file);
-    const url = cid + ".ipfs.w3s.link/" + rawFileName;
-    console.log(url);
-    const res = await addNewDocRequest(filename, url);
-    await swal("","Successfully Uploaded!", "success")
-    navigate('/')
+    // const cid = await uploadFile(file);
+    // const url = "https://" + cid + ".ipfs.w3s.link/" + rawFileName;
+    // console.log(url);
+    var fileReader = new FileReader();
+    var base64;
+    fileReader.onload = function (fileLoadedEvent) {
+      base64 = fileLoadedEvent.target.result;
+    };
+    fileReader.readAsDataURL(file);
+    console.log(base64);
+    const enc = encrypt(base64);
+    console.log("encrypted: ", enc);
+    // const res = await addNewDocRequest(filename, url);
+    // await swal("", "Successfully Uploaded!", "success");
+    // navigate("/");
   };
   const fileTypes = ["PDF"];
 
@@ -41,7 +51,9 @@ const UploadDoc = () => {
   return (
     <div className="h-screen w-screen flex items-center justify-center">
       {isUploading ? (
-        <div><SyncLoader color="#36d7b7" /></div>
+        <div>
+          <SyncLoader color="#36d7b7" />
+        </div>
       ) : (
         <form className="flex flex-col items-center ">
           <div class="form-floating mb-3 xl:w-96">
