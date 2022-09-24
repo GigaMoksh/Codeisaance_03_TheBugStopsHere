@@ -16,7 +16,8 @@ function PDFViewer({ fileurl }) {
     <div className="flex items-center justify-center flex-col">
       <Document
         file={{
-          url: `https://cors-anywhere.herokuapp.com/${fileurl}`,
+          // url: `https://cors-anywhere.herokuapp.com/${fileurl}`,
+          url: fileurl,
         }}
         onLoadSuccess={onDocumentLoadSuccess}
         onLoadError={console.error}
